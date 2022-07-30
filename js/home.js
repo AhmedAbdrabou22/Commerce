@@ -51,57 +51,6 @@ if(decreaseNum){
 }
 
 
-
-// var buttonMoveCart = document.getElementById("moveCart");
-// var tbodyOfTable = document.getElementById("tbody");
-// if(buttonMoveCart){
-//     buttonMoveCart.addEventListener("click",()=>{
-//             let tr =`
-//         <tr>
-//             <td class="productImg">
-//                 <div class="ss" style="background-image: url(${window.localStorage.getItem('source')})">
-//                 </div>
-//                 <span class="mx-2">Lorem, ipsum.</span>
-//             </td>
-//         <td id="unitPrice">199</td>
-//         <td class="qty">
-//             <i id="increaseCart" class="mx-3 border fa-solid fa-plus"></i>
-//             <span class="numcartchange">0</span>
-//             <i class="mx-3 fa-solid fa-minus border" id="decreaseCart"></i>
-//         </td>
-//         <td id="totalPrice">0</td>
-//         </tr>`
-//         window.localStorage.setItem('trtable',tr);
-//         // location.href = "cart.html";
-//     })
-// }
-
-// window.addEventListener("load",()=>{
-//     if(location.href=="http://127.0.0.1:5500/cart.html"){
-//         tbodyOfTable.innerHTML = window.localStorage.getItem("trtable"); 
-//         let increaseCartProduct = document.getElementById("increaseCart");
-//         let decreaseCartProduct = document.getElementById("decreaseCart");
-//         let unitPrice = document.getElementById("unitPrice");
-//         let totalPrice = document.getElementById("totalPrice");
-//         let numCartChange = document.querySelector(".numcartchange");
-//         increaseCartProduct.addEventListener('click',()=>{
-//             parseInt(numCartChange.innerHTML++);
-//             totalPrice.innerHTML = parseInt(unitPrice.innerHTML)* parseInt(numCartChange.innerHTML)
-//         })
-//         decreaseCartProduct.addEventListener('click',()=>{
-//             if( parseInt(numCartChange.innerHTML) <= 0){
-//                 alert("no the buyin quantm must be greater than zero");
-//                 parseInt(numCartChange.innerHTML) = 0;
-//             }else{
-//                 parseInt(numCartChange.innerHTML--);
-//                 totalPrice.innerHTML = parseInt(unitPrice.innerHTML)* parseInt(numCartChange.innerHTML)
-//             }
-//         })
-//     }
-// })
-
-
-
 //Task in Form Html page 
 var masters = document.querySelectorAll(".master")
 masters.forEach((master)=>{
@@ -119,13 +68,12 @@ masters.forEach((master)=>{
 //Task local Storage 
 let ask =(JSON.parse(localStorage.getItem('contact'))||[]);
 document.addEventListener('DOMContentLoaded',loadData);
-console.log(ask)
 
 function getData(){
     ask.push({
         unitPrice : 200 ,
         numcartchange : 0,
-        totalPrice : 50,
+        totalPrice : 0,
     })
     localStorage.setItem("contact",JSON.stringify(ask))
 }
@@ -140,11 +88,11 @@ function displayContentbody(){
             </td>
             <td id="unitPrice">${ask[i].unitPrice}</td>
             <td class="qty">
-                <i id="increaseCart" class="mx-3 border fa-solid fa-plus"></i>
+                <i id="increaseCart" onclick = "increaseIt(event)" class="mx-3 border fa-solid fa-plus"></i>
                 <span class="numcartchange">${ask[i].numcartchange}</span>
-                <i class="mx-3 fa-solid fa-minus border" id="decreaseCart"></i>
+                <i class="mx-3 fa-solid fa-minus border" id="decreaseCart" onclick="decreasIt(event)"></i>
             </td>
-            <td id="totalPrice">${ask[i].totalPrice}</td>
+            <td id="totalPrice" class="tot">${ask[i].totalPrice}</td>
             </tr>
         `
     }
@@ -152,6 +100,25 @@ function displayContentbody(){
         tbody.innerHTML = tr;
     }
 }
+
+
+function increaseIt(event){
+    let quanm = event.path[0].nextElementSibling;
+    +quanm.innerHTML++;
+    event.path[0].parentElement.nextElementSibling.innerHTML = +quanm.innerHTML * +quanm.parentElement.previousElementSibling.innerHTML;
+}
+function decreasIt(event){
+    if(+event.path[0].previousElementSibling.innerHTML == 0){
+        alert("QuantuityNot Be Zero ")
+        event.path[0].previousElementSibling.innerHTML = 0;
+    }else{
+        let dec = event.path[0].previousElementSibling;
+        +dec.innerHTML--;
+        event.path[0].parentElement.nextElementSibling.innerHTML = +dec.innerHTML * +dec.parentElement.previousElementSibling.innerHTML;
+    }
+}
+
+
 let save = document.querySelector('.save');
 let moveCart = document.getElementById('moveCart')
 if(moveCart){
