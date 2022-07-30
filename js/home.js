@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded',loadData);
 function getData(){
     ask.push({
         unitPrice : 200 ,
-        numcartchange : 0,
+        numcartchange : 1,
         totalPrice :0,
     })
     localStorage.setItem("contact",JSON.stringify(ask))
@@ -110,7 +110,6 @@ function increaseIt(event){
 }
 function decreasIt(event){
     if(+event.path[0].previousElementSibling.innerHTML == 0){
-        alert("QuantuityNot Be Zero ")
         event.path[0].previousElementSibling.innerHTML = 0;
     }else{
         let dec = event.path[0].previousElementSibling;
@@ -128,6 +127,7 @@ if(moveCart){
         displayContentbody();
     })
 }
+
 function loadData(){
     if(ask.length > 0){
         ask.forEach(a=>{
@@ -135,3 +135,4 @@ function loadData(){
         })
     }
 }
+

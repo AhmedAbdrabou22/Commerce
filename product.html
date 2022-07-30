@@ -104,7 +104,8 @@
                                 <i class="fa-solid fa-plus uu" id="increaseNum"></i>
                             </div>
                             <div class="border">
-                                <button class="btn btn-dark" id="moveCart">Add To Cart</button>
+                                <button class="btn btn-dark" id="moveCart" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalLong">Add To Cart</button>
                             </div>
                             <div class="border p-2 border-2 text-center">
                                 <i class="fa-regular fa-heart mx-3 hh" id="heartColor"></i>
@@ -316,6 +317,25 @@
         <!-- Section: Links  -->
     </footer>
 <!---section footer-->
+        <!--Modal related with button in watch video in navbar(Some notes in this modal is important )-->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Class modal-fullscreen => make modalwidth 100% and height 100%-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title m-auto" id="exampleModalLongTitle">
+                        <i class="fa-solid fa-check border border-3 bg-success text-light p-3 mx-2 rounded-circle"></i>Product added successfully
+                    </h5>
+                    <button type="button" class="close py-2 border-0 bg-body fs-3" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of modal -->
     <script src="js/vendors/bootstrap.bundle.js"></script>
     <script src="js/vendors/jquery.min.js"></script>
     <script src="js/home.js"></script>
