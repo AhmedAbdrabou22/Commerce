@@ -73,7 +73,7 @@ function getData(){
     ask.push({
         unitPrice : 200 ,
         numcartchange : 0,
-        totalPrice : 0,
+        totalPrice :0,
     })
     localStorage.setItem("contact",JSON.stringify(ask))
 }
@@ -101,6 +101,7 @@ function displayContentbody(){
     }
 }
 
+var total = document.querySelector('.sse p');
 
 function increaseIt(event){
     let quanm = event.path[0].nextElementSibling;
