@@ -83,6 +83,10 @@ function displayContentbody(){
     for(let i = 0; i < ask.length ; i++){
         tr+=`
         <tr>
+        <td class="productImg">
+            <div class="ss" style="background-image: url(${window.localStorage.getItem('source')})">
+            </div>
+        </td>
             <td class="productImg">
                 <span class="mx-2">Lorem, ipsum.</span>
             </td>
@@ -135,4 +139,3 @@ function loadData(){
         })
     }
 }
-
