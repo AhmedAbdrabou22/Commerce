@@ -1,7 +1,7 @@
 
 /**Checkout Page Style */
 .payemntPurcher{
-    /* display: -webkit-box;
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-line-pack: center;
@@ -17,7 +17,7 @@
         flex-wrap: wrap;
     font-family: 'Raleway';
     width:60%;
-    margin:auto; */
+    margin:auto;
 }
 .payment-title {
     width: 100%;
