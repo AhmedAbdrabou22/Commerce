@@ -489,16 +489,20 @@ footer .social{
 }
 .buying table tr .productImg {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:space-around;
+    align-items:flex-start;
+}
+.buying table tr .productImg span{
+    display: block;
+    margin-top:15px;
 }
 .buying table tr .productImg .ss{
     width:38%;
     height:90px;   
     background-repeat: no-repeat;
     background-size: contain;
-    display: inline-block;
 }
+
 .buying .vasher{
     background-color: #FAFAFA;
     font-weight: bold;

@@ -86,10 +86,8 @@ function displayContentbody(){
         <td class="productImg">
             <div class="ss" style="background-image: url(${window.localStorage.getItem('source')})">
             </div>
+            <div><span class="mx-2">Lorem, ipsum.</span></div>
         </td>
-            <td class="productImg">
-                <span class="mx-2">Lorem, ipsum.</span>
-            </td>
             <td id="unitPrice">${ask[i].unitPrice}</td>
             <td class="qty">
                 <i id="increaseCart" onclick = "increaseIt(event)" class="mx-3 border fa-solid fa-plus"></i>
