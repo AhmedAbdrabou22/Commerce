@@ -496,6 +496,9 @@ footer .social{
     display: block;
     margin-top:15px;
 }
+.buying table tr .productImg .ss img{
+    width:50px;
+}
 .buying table tr .productImg .ss{
     width:38%;
     height:90px;   

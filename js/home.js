@@ -1,5 +1,3 @@
-
-//Task Replace the image (Product Page)
 var imageGallery = document.querySelector(".galleryImage img");
 var imagesContain = document.querySelectorAll(".imgContain img");
 
@@ -12,9 +10,9 @@ imagesContain.forEach((image)=>{
         imageGallery.setAttribute("src",setSRC);
         let source = imageGallery.getAttribute("src");
         console.log(source)    
-        window.localStorage.setItem("source",source);
     });
 });
+
 
 
 //Task increase number of image quantm
@@ -65,18 +63,9 @@ masters.forEach((master)=>{
 
 
 
-//Task local Storage 
 let ask =(JSON.parse(localStorage.getItem('contact'))||[]);
 document.addEventListener('DOMContentLoaded',loadData);
 
-function getData(){
-    ask.push({
-        unitPrice : 200 ,
-        numcartchange : 1,
-        totalPrice :0,
-    })
-    localStorage.setItem("contact",JSON.stringify(ask))
-}
 let tbody = document.getElementById("tbody");
 function displayContentbody(){
     let tr = '';
@@ -84,9 +73,10 @@ function displayContentbody(){
         tr+=`
         <tr>
         <td class="productImg">
-            <div class="ss" style="background-image: url(${window.localStorage.getItem('source')})">
+            <div class="ss">
+            <img src="${ask[i].strig}">
             </div>
-            <div><span class="mx-2">Lorem, ipsum.</span></div>
+            <div><span class="mx-2">fsdf</span></div>
         </td>
             <td id="unitPrice">${ask[i].unitPrice}</td>
             <td class="qty">
@@ -103,6 +93,33 @@ function displayContentbody(){
     }
 }
 
+let save = document.querySelector('.save');
+let moveCart = document.getElementById('moveCart')
+if(moveCart){
+    moveCart.addEventListener('click',()=>{
+        function getData(){
+            ask.push({
+                unitPrice : 200 ,
+                numcartchange : 1,
+                totalPrice :450,
+                strig:moveCart.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild.src,
+            })
+            localStorage.setItem("contact",JSON.stringify(ask))
+        }
+        getData();
+        displayContentbody();
+    })
+}
+
+function loadData(){
+    if(ask.length > 0){
+        ask.forEach(a=>{
+            displayContentbody(a)
+        })
+    }
+}
+
+
 var total = document.querySelector('.sse p');
 
 function increaseIt(event){
@@ -117,24 +134,6 @@ function decreasIt(event){
         let dec = event.path[0].previousElementSibling;
         +dec.innerHTML--;
         event.path[0].parentElement.nextElementSibling.innerHTML = +dec.innerHTML * +dec.parentElement.previousElementSibling.innerHTML;
-    }
-}
-
-
-let save = document.querySelector('.save');
-let moveCart = document.getElementById('moveCart')
-if(moveCart){
-    moveCart.addEventListener('click',()=>{
-        getData();
-        displayContentbody();
-    })
-}
-
-function loadData(){
-    if(ask.length > 0){
-        ask.forEach(a=>{
-            displayContentbody(a)
-        })
     }
 }
 
