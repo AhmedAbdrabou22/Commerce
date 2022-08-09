@@ -39,8 +39,8 @@ if(increaseNum){
 }
 if(decreaseNum){
     decreaseNum.addEventListener("click",()=>{
-        if(+numChange.innerHTML <= 0){
-            numChange.innerHTML = 0;
+        if(+numChange.innerHTML <= 1){
+            numChange.innerHTML = 1;
             alert("THE MUCH NOT BEE ZERO");
         }else{
             parseInt(numChange.innerHTML--);
@@ -59,8 +59,6 @@ masters.forEach((master)=>{
         master.classList.add('btn-dark')
     })
 })
-
-
 
 
 let ask =(JSON.parse(localStorage.getItem('contact'))||[]);
